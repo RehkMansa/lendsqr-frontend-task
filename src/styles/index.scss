@@ -1,3 +1,5 @@
+@import "utility";
+
 /*Josh's Custom CSS Reset @ https://www.joshwcomeau.com/css/custom-css-reset/ */
 *,
 *::before,
@@ -38,6 +40,16 @@ h4,
 h5,
 h6 {
     overflow-wrap: break-word;
+    font: unset;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
 }
 
 #root,
