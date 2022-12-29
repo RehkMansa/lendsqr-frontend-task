@@ -14,11 +14,17 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@loadable/component": "^5.15.2",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-hot-toast": "^2.4.0",
+        "react-router": "^6.6.1",
+        "react-router-dom": "^6.6.1",
+        "react-spinners": "^0.13.7"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.19.1",
+        "@types/loadable__component": "^5.13.4",
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
         "@typescript-eslint/parser": "^5.40.0",
@@ -41,10 +47,11 @@
         "prettier": "^2.7.1",
         "prettier-eslint": "^15.0.1",
         "prettier-eslint-cli": "^7.1.0",
+        "sass": "^1.57.1",
         "typescript": "^4.6.4",
         "vite": "^3.1.0"
     },
     "lint-staged": {
-        "*.{js,jsx,html,css,json,md}": ["eslint", "prettier --write"]
+        "*.{ts,tsx,html,css,json,md}": ["eslint", "prettier --write"]
     }
 }

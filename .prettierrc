@@ -23,8 +23,9 @@
             }
         },
         {
-            "files": "*.css",
+            "files": "*.{scss, css}",
             "options": {
+                "semi": false,
                 "parser": "css"
             }
         }
