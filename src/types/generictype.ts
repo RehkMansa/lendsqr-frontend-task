@@ -1,3 +1,3 @@
-export type ObjectType = { [key: string]: unknown };
+export type ObjectType = Record<string, unknown>;
 
 export type ArrayOfObjects = ObjectType[];

@@ -5,3 +5,4 @@ templates/*
 src/vite-env.d.ts
 *.css
 *.json
+*.scss

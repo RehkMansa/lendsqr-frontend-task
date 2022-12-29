@@ -11,6 +11,7 @@ html,
 body {
     height: 100%;
 }
+
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -44,12 +45,9 @@ h6 {
     isolation: isolate;
 }
 
-// Font imports
+/* Font Declaration */
+
 @font-face {
     font-family: "Avenir Next";
     src: url("/fonts/avenir/Avenir Next Font.ttf") format("truetype");
-}
-
-.font-avenir {
-    font-family: "Avenir Next", sans-serif;
 }

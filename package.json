@@ -52,6 +52,6 @@
         "vite": "^3.1.0"
     },
     "lint-staged": {
-        "*.{ts,tsx,html,css,json,md}": ["eslint", "prettier --write"]
+        "*.{ts,tsx,css,scss}": ["eslint", "prettier --write"]
     }
 }

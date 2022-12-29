@@ -1,0 +1,7 @@
+.loader {
+    inset: 0;
+    position: fixed;
+    display: grid;
+    place-content: center;
+    background-color: rgba($color: #fff, $alpha: 0.3);
+}
