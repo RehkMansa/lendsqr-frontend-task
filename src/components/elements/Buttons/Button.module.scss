@@ -1,13 +1,18 @@
+@import "../../../styles/colors.scss";
 .button {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     border: none;
     border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
+    min-height: 40px;
 
     &.primary {
-        background: $primary-color;
+        background: $accent-color;
         color: white;
     }
 
@@ -16,12 +21,12 @@
     }
 
     &.transparent-primary {
-        color: $primary-color;
+        color: $accent-color;
         @extend .transparent;
     }
 
     &.transparent-danger {
-        color: $danger-color;
+        color: $text-danger;
         @extend .transparent;
     }
 }

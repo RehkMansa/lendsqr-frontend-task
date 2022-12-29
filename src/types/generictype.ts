@@ -1,3 +1,11 @@
-export type ObjectType = Record<string, unknown>;
+import React from "react";
 
-export type ArrayOfObjects = ObjectType[];
+export type ObjectType<T> = Record<string, T>;
+
+export type ArrayOfObjects<T> = ObjectType<T>[];
+
+export type InputOnchange = React.ChangeEvent<HTMLInputElement>;
+
+export type FormSubmit = React.SyntheticEvent;
+
+export type KeyOfType<T extends Record<string, unknown>> = keyof T;

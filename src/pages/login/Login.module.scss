@@ -8,6 +8,7 @@
     place-items: center;
     height: 100vh;
     grid-template-columns: 1fr;
+    color: $primary-color;
 
     h1 {
         font-family: $avenirBold;
@@ -24,6 +25,17 @@
     .boxed {
         padding-inline: 10%;
         width: 100%;
+    }
+
+    .buttonWrapper {
+        padding-top: 10px;
+
+        button {
+            width: 100%;
+            height: 48px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
     }
 
     @media (min-width: 744px) {
