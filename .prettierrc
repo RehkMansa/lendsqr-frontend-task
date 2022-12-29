@@ -25,7 +25,6 @@
         {
             "files": "*.css",
             "options": {
-                "semi": false,
                 "parser": "css"
             }
         }
