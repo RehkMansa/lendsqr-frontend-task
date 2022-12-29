@@ -1,10 +1,20 @@
-import SuspenseLoader from "../../components/elements/Loader/SuspenseLoader";
+import Illustration from "../../assets/login-illustration.svg";
+import Input from "../../components/elements/Input";
 
 const Login = () => (
-    <div>
-        <h1>Login Page</h1>
-        <SuspenseLoader />
-    </div>
+    <main>
+        <img src={Illustration} alt="" />
+        <section>
+            <form>
+                <div>
+                    <h1>Welcome</h1>
+                    <p>Enter details to login.</p>
+                </div>
+
+                <Input error="No username" />
+            </form>
+        </section>
+    </main>
 );
 
 export default Login;
