@@ -18,7 +18,7 @@
         color: $accent-darker;
     }
 
-    img {
+    .imgWrapper img {
         display: none;
     }
 
@@ -58,8 +58,17 @@
             }
         }
 
-        img {
+        .imgWrapper img {
             display: unset;
         }
+    }
+}
+
+.nav {
+    position: absolute;
+    padding: 2.5rem 0 0 3rem;
+
+    @media (min-width: 744px) {
+        padding: 2.5rem 0 0 5rem;
     }
 }

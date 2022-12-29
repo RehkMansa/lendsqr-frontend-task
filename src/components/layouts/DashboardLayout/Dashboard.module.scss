@@ -1,14 +1,16 @@
 @import "../../../styles/fonts.scss";
+@import "../../../styles/constants.scss";
 
 .main {
     font-family: $workSans;
     display: grid;
+    gap: 16px;
+
+    & > * {
+        padding-top: calc($headerHeight / 2);
+    }
 
     @media (min-width: 992px) {
         grid-template-columns: 240px 1fr;
-
-        & > * {
-            // border: 1px solid red;
-        }
     }
 }

@@ -8,7 +8,7 @@ const SideBar = () => (
                 <p>{name}</p>
                 {subItems.map(({ name: iconName, src, isActive }) => (
                     <div
-                        className={`${styles.nav} ${isActive && styles.active}`}
+                        className={`${styles.nav} ${isActive ? styles.active : ""}`}
                         key={iconName}
                     >
                         <img src={src} alt={iconName} />

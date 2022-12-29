@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { validateAll } from "indicative/validator";
 import Illustration from "../../assets/login-illustration.svg";
+import Logo from "../../assets/logo.svg";
 import Button from "../../components/elements/Buttons";
 import { DefaultInput, PasswordInput } from "../../components/elements/Input";
 import styled from "./Login.module.scss";
@@ -55,38 +56,45 @@ const Login = () => {
     };
 
     return (
-        <main className={styled.main}>
-            <img src={Illustration} alt="" />
-            <section className={styled.boxed}>
-                <div className="space-y-20">
-                    <div className="space-y-4">
-                        <h1>Welcome!</h1>
-                        <p className="text-lg">Enter details to login.</p>
-                    </div>
-                    <form onSubmit={handleSubmit} className="space-y-12">
-                        <DefaultInput
-                            onChange={(e) => handleChange(e, "email")}
-                            placeholder="Email"
-                            error={errors.email}
-                            name="email"
-                            type="email"
-                        />
-                        <PasswordInput
-                            onChange={(e) => handleChange(e, "password")}
-                            placeholder="Password"
-                            name="password"
-                            error={errors.password}
-                        />
-                        <p className="text-accent text-xs font-bold capitalize">
-                            Forgot password?
-                        </p>
-                        <div className={styled.buttonWrapper}>
-                            <Button type="submit">LOG IN</Button>
-                        </div>
-                    </form>
+        <>
+            <nav className={styled.nav}>
+                <img className={styled.logo} src={Logo} alt="Lend Sqr" />
+            </nav>
+            <main className={styled.main}>
+                <div className={styled.imgWrapper}>
+                    <img src={Illustration} alt="" />
                 </div>
-            </section>
-        </main>
+                <section className={styled.boxed}>
+                    <div className="space-y-20">
+                        <div className="space-y-4">
+                            <h1>Welcome!</h1>
+                            <p className="text-lg">Enter details to login.</p>
+                        </div>
+                        <form onSubmit={handleSubmit} className="space-y-12">
+                            <DefaultInput
+                                onChange={(e) => handleChange(e, "email")}
+                                placeholder="Email"
+                                error={errors.email}
+                                name="email"
+                                type="email"
+                            />
+                            <PasswordInput
+                                onChange={(e) => handleChange(e, "password")}
+                                placeholder="Password"
+                                name="password"
+                                error={errors.password}
+                            />
+                            <p className="text-accent text-xs font-bold capitalize">
+                                Forgot password?
+                            </p>
+                            <div className={styled.buttonWrapper}>
+                                <Button type="submit">LOG IN</Button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </>
     );
 };
 

@@ -1,5 +1,7 @@
+import styled from "./Header.module.scss";
+
 const Header = () => (
-    <header>
+    <header className={styled.header}>
         <div>
             <h3>header</h3>
         </div>
