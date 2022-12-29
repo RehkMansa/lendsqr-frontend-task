@@ -7,4 +7,17 @@
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
     height: $headerHeight;
     z-index: 1;
+    padding-inline: 30px;
+
+    display: grid;
+    align-items: center;
+
+    .nav {
+        display: grid;
+        grid-template-columns: $gridArea;
+
+        img {
+            height: 30px;
+        }
+    }
 }
