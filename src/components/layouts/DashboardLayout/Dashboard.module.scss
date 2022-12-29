@@ -1,0 +1,14 @@
+@import "../../../styles/fonts.scss";
+
+.main {
+    font-family: $workSans;
+    display: grid;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 240px 1fr;
+
+        & > * {
+            // border: 1px solid red;
+        }
+    }
+}

@@ -1,14 +1,18 @@
 import { sidebarItems } from "./data";
+import styles from "./Sidebar.module.scss";
 
 const SideBar = () => (
-    <aside>
+    <aside className={`${styles.aside} space-y-10`}>
         {sidebarItems.map(({ name, subItems }) => (
-            <div key={name}>
+            <div className={`${styles.wrapper} space-y-3`} key={name}>
                 <p>{name}</p>
-                {subItems.map(({ name: iconName, src }) => (
-                    <div key={iconName}>
+                {subItems.map(({ name: iconName, src, isActive }) => (
+                    <div
+                        className={`${styles.nav} ${isActive && styles.active}`}
+                        key={iconName}
+                    >
                         <img src={src} alt={iconName} />
-                        <p>{iconName}</p>
+                        <p className="text-base">{iconName}</p>
                     </div>
                 ))}
             </div>

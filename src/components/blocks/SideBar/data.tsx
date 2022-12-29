@@ -25,6 +25,7 @@ export const sidebarItems = [
             {
                 name: "Users",
                 src: UsersIcon,
+                isActive: true,
             },
             {
                 name: "Guarantors",
@@ -115,4 +116,4 @@ export const sidebarItems = [
             },
         ],
     },
-] as const; // to make the array immutable
+];

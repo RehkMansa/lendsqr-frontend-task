@@ -1,0 +1,44 @@
+@import "../../../styles/colors.scss";
+
+.aside {
+    color: rgba($color: $primary-color, $alpha: 0.8);
+
+    .wrapper {
+        & > p {
+            padding: 10px 30px;
+        }
+    }
+
+    .nav {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 30px;
+        cursor: pointer;
+
+        &.active {
+            background: rgba($color: $accent-color, $alpha: 0.09);
+            color: $accent-darker;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background-color: $accent-color;
+            }
+
+            img {
+                opacity: 1;
+            }
+        }
+    }
+
+    img {
+        opacity: 0.8;
+    }
+}
