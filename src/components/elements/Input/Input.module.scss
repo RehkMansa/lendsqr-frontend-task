@@ -8,9 +8,31 @@
         border: 2px solid rgba(84, 95, 125, 0.15);
         color: $primary-color;
         outline: none;
+        padding: 13px 16px;
+        font-size: 14px;
+        width: 100%;
     }
 
     .error {
         color: $text-danger;
+    }
+}
+
+.password {
+    position: relative;
+
+    button {
+        position: absolute;
+        color: $accent-color;
+        background: none;
+        border: none;
+        bottom: 5px;
+        right: 20px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
     }
 }

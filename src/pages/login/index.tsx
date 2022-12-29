@@ -1,5 +1,5 @@
 import Illustration from "../../assets/login-illustration.svg";
-import Input from "../../components/elements/Input";
+import { DefaultInput, PasswordInput } from "../../components/elements/Input";
 
 const Login = () => (
     <main>
@@ -11,7 +11,8 @@ const Login = () => (
                     <p>Enter details to login.</p>
                 </div>
 
-                <Input error="No username" />
+                <DefaultInput error="No username" />
+                <PasswordInput error="" />
             </form>
         </section>
     </main>
