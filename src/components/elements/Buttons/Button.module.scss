@@ -1,0 +1,27 @@
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &.primary {
+        background: $primary-color;
+        color: white;
+    }
+
+    &.transparent {
+        border: 1px solid;
+    }
+
+    &.transparent-primary {
+        color: $primary-color;
+        @extend .transparent;
+    }
+
+    &.transparent-danger {
+        color: $danger-color;
+        @extend .transparent;
+    }
+}

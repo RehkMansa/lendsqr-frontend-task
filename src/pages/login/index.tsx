@@ -11,10 +11,12 @@ const Login = () => (
                     <h1>Welcome!</h1>
                     <p>Enter details to login.</p>
                 </div>
-                <form className="space-y-6">
-                    <DefaultInput error="No username" />
+                <form className="space-y-12">
+                    <DefaultInput error="" />
                     <PasswordInput error="" />
-                    <p className="text-accent tag">Forgot PASSWORD?</p>
+                    <p className="text-accent text-xs font-bold capitalize">
+                        Forgot password?
+                    </p>
                 </form>
             </div>
         </section>

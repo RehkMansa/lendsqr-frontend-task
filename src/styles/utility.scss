@@ -53,6 +53,24 @@ $font-sizes: (
     }
 }
 
+$font-weights: (
+    thin: 275,
+    light: 300,
+    normal: 400,
+    normalAlt: 450,
+    medium: 600,
+    semiBold: 700,
+    bold: 750,
+    extraBold: 800,
+    heavy: 900,
+);
+
+@each $name, $weight in $font-weights {
+    .font-#{$name} {
+        font-weight: $weight;
+    }
+}
+
 /*   xs: 0.75rem, // 12px
   sm: 0.875rem, // 14px
   base: 1rem, // 16px
