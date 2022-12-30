@@ -25,7 +25,7 @@
         grid-template-columns: $gridArea;
     }
 
-    @media (max-width: 1199px) {
+    @include rangedBreakPoint(lg) {
         .outlet {
             margin-left: 20px;
         }

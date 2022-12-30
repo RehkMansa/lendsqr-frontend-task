@@ -10,7 +10,7 @@
     background-color: #fff;
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
     height: $headerHeight;
-    z-index: 1;
+    z-index: 2;
     font-family: $workSans;
     color: $accent-darker;
 
@@ -19,17 +19,47 @@
 
     .nav {
         display: grid;
-        grid-template-columns: $gridArea;
+        grid-auto-flow: column;
         align-items: center;
+
+        @include rangedBreakPoint(sm) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include breakpoint(sm) {
+            grid-template-columns: $gridArea;
+        }
+
+        @include rangedBreakPoint(xs) {
+            margin-inline: 10px;
+        }
+    }
+
+    button {
+        height: 25px;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: none;
     }
 
     .header__right {
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1em;
-        grid-template-columns: 1fr 1fr;
-        margin-inline: 40px;
+        @include breakpoint(lg) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1em;
+
+            & > form {
+                display: initial;
+            }
+        }
+
+        @include rangedBreakPoint(xs) {
+            margin-inline: 0px;
+        }
     }
 
     .header__content {
@@ -37,19 +67,50 @@
         align-items: center;
         justify-content: end;
         gap: 0.7em;
+        // border: 1px solid green;
 
         svg {
             margin-inline: 40px 30px;
+        }
+
+        @media (max-width: 991px) {
+            gap: 1.2em;
+            button {
+                display: inline-block;
+            }
+
+            a {
+                display: none;
+            }
+
+            svg {
+                margin-inline: 10px;
+            }
+        }
+
+        @include rangedBreakPoint(xs) {
+            svg {
+                margin-inline: 0;
+            }
+
+            p {
+                display: none;
+            }
         }
     }
 
     a {
         color: inherit;
-        font-family: $fallback;
+        font-family: $avenir;
+        font-weight: 500;
     }
 
     .header__search {
         max-width: 400px;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
     }
 
     .avatar {
@@ -69,18 +130,7 @@
 
     .logo__wrapper {
         display: flex;
-        // align-items: center;
-        // justify-content: center;
         gap: 20px;
-
-        button {
-            height: 25px;
-            background: none;
-            border: none;
-            outline: none;
-            display: inline-flex;
-            cursor: pointer;
-        }
 
         img {
             max-height: 28px;
@@ -89,8 +139,11 @@
 
         @include breakpoint(xl) {
             padding-inline: 30px;
+        }
+
+        @include rangedBreakPoint(lg) {
             button {
-                display: none;
+                display: inline-block;
             }
         }
     }

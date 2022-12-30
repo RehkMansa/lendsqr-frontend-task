@@ -20,12 +20,18 @@ const Header = ({ toggleSidebar }: { toggleSidebar(): void }) => (
                 </div>
                 <div className={styled.header__content}>
                     <a href="#">Docs</a>
-                    <BsBell />
-
+                    <BsBell size={27} />
                     <div className={styled.avatar}>
                         <img src={Avatar} alt="" />
                         <p>Adedeji</p>
                     </div>
+                    <button
+                        aria-label="toggle menu"
+                        type="button"
+                        onClick={toggleSidebar}
+                    >
+                        <RxHamburgerMenu size={23} />
+                    </button>
                 </div>
             </div>
         </nav>
