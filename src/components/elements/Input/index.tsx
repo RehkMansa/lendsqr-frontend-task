@@ -4,6 +4,7 @@ import styles from "./Input.module.scss";
 type Props = {
     error: string; // error string to show error message
     overrideStyles?: string; // override default styles
+    placeholder: string;
 } & ComponentProps<"input">; // typescript inbuilt method to get additional prop types
 
 export const DefaultInput = ({
@@ -17,6 +18,7 @@ export const DefaultInput = ({
             className={styles.input}
             placeholder={placeholder ?? "Enter Placeholder"}
             {...rest}
+            aria-label={placeholder}
         />
 
         {error && <p className={styles.error}>{error}</p>}
@@ -36,11 +38,12 @@ export const PasswordInput = ({
             <div className={styles.password}>
                 <input
                     className={styles.input}
-                    placeholder={placeholder ?? "Enter Placeholder"}
+                    placeholder={placeholder ?? "Password"}
                     {...rest}
                     type={showPassword ? "text" : "password"}
+                    aria-label={placeholder}
                 />
-                <button type="button" onClick={() => setShowPassword(c => !c)}>
+                <button type="button" onClick={() => setShowPassword((c) => !c)}>
                     {showPassword ? "hide" : "show"}
                 </button>
             </div>

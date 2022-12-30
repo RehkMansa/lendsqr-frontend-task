@@ -6,7 +6,7 @@ type Props = {
     children: React.ReactNode;
     variant?: "primary" | "transparent" | "transparent-danger" | "transparent-primary";
     overrideClass?: string;
-} & ComponentProps<"button">;
+} & Omit<ComponentProps<"button">, "className">;
 
 const Button = ({
     children,

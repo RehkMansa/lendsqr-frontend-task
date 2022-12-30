@@ -1,4 +1,6 @@
 @import "../../../styles/constants.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
 
 .header {
     position: sticky;
@@ -8,6 +10,8 @@
     height: $headerHeight;
     z-index: 1;
     padding-inline: 30px;
+    font-family: $workSans;
+    color: $accent-darker;
 
     display: grid;
     align-items: center;
@@ -15,9 +19,54 @@
     .nav {
         display: grid;
         grid-template-columns: $gridArea;
+        align-items: center;
 
         img {
-            height: 30px;
+            height: 27px;
+        }
+    }
+
+    .header__right {
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;
+        grid-template-columns: 1fr 1fr;
+        margin-inline: 40px;
+    }
+
+    .header__content {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 0.7em;
+
+        svg {
+            margin-inline: 40px 30px;
+        }
+    }
+
+    a {
+        color: inherit;
+        font-family: $fallback;
+    }
+
+    .header__search {
+        max-width: 400px;
+    }
+
+    .avatar {
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+
+        p {
+            font-weight: 500;
+        }
+
+        img {
+            height: 48px;
+            width: 48px;
         }
     }
 }

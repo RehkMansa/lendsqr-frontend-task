@@ -1,5 +1,6 @@
 @import "../../styles/fonts.scss";
 @import "../../styles/colors.scss";
+@import "../../styles/breakpoints.scss";
 
 .main {
     overflow: hidden;
@@ -38,7 +39,7 @@
         }
     }
 
-    @media (min-width: 744px) {
+    @include breakpoint(md) {
         grid-template-columns: repeat(2, 1fr);
 
         .boxed {
@@ -68,7 +69,7 @@
     position: absolute;
     padding: 2.5rem 0 0 3rem;
 
-    @media (min-width: 744px) {
+    @include breakpoint(md) {
         padding: 2.5rem 0 0 5rem;
     }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { validateAll } from "indicative/validator";
+import { useNavigate } from "react-router-dom";
 import Illustration from "../../assets/login-illustration.svg";
 import Logo from "../../assets/logo.svg";
 import Button from "../../components/elements/Buttons";
@@ -21,6 +22,7 @@ const Login = () => {
         password: "",
     });
     const [errors, setErrors] = useState<ObjectType<string>>({});
+    const navigate = useNavigate();
 
     const handleChange = (e: InputOnchange, name: KeyOfType<typeof formData>) => {
         const { value } = e.target;
@@ -29,6 +31,12 @@ const Login = () => {
             ...prev,
             [name]: value,
         }));
+    };
+
+    const handleLogin = () => {
+        store.save("user", formData);
+        setErrors({});
+        navigate("users");
     };
 
     const handleSubmit = (e: FormSubmit) => {
@@ -47,7 +55,7 @@ const Login = () => {
         };
 
         validateAll(formData, rules, message)
-            .then(() => store.save("user", formData))
+            .then(() => handleLogin())
             .catch((err) => {
                 const formattedErrors = getValidationErrors(err);
 
