@@ -24,4 +24,10 @@
     @include breakpoint(xl) {
         grid-template-columns: $gridArea;
     }
+
+    @media (max-width: 1199px) {
+        .outlet {
+            margin-left: 20px;
+        }
+    }
 }

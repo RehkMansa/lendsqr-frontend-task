@@ -23,42 +23,47 @@ const NavItem = ({ isActive, iconName, src, dropDown, className }: Props) => (
     </div>
 );
 
-const SideBar = ({ open }: { open: boolean }) => (
-    <aside className={`${styles.aside} ${open ? styles.open : ""} space-y-15`}>
-        <div>
-            <div className="space-y-13">
-                <NavItem
-                    dropDown
-                    isActive={false}
-                    iconName="Switch Organization"
-                    src={SwitchOrg}
-                    className="text-accent-darker"
-                />
-                <NavItem
-                    dropDown={false}
-                    isActive={false}
-                    iconName="Dashboard"
-                    src={DashboardIcon}
-                />
-            </div>
-            {sidebarItems.map(({ name, subItems }) => (
-                <div className={`${styles.wrapper} space-y-5`} key={name}>
-                    <p className="text-sm uppercase text-primary font-semiMedium">
-                        {name}
-                    </p>
-                    {subItems.map(({ name: iconName, src, isActive }) => (
-                        <div
-                            className={`${styles.nav} ${isActive ? styles.active : ""}`}
-                            key={iconName}
-                        >
-                            <img src={src} alt={iconName} />
-                            <p className="text-base">{iconName}</p>
-                        </div>
-                    ))}
+const SideBar = ({ open, closeModal }: { open: boolean; closeModal(): void }) => (
+    <>
+        <aside className={`${styles.aside} ${open ? styles.open : ""}`}>
+            <div className="space-y-15">
+                <div className="space-y-13">
+                    <NavItem
+                        dropDown
+                        isActive={false}
+                        iconName="Switch Organization"
+                        src={SwitchOrg}
+                        className="text-accent-darker"
+                    />
+                    <NavItem
+                        dropDown={false}
+                        isActive={false}
+                        iconName="Dashboard"
+                        src={DashboardIcon}
+                    />
                 </div>
-            ))}
-        </div>
-    </aside>
+                {sidebarItems.map(({ name, subItems }) => (
+                    <div className={`${styles.wrapper} space-y-5`} key={name}>
+                        <p className="text-sm uppercase text-primary font-semiMedium">
+                            {name}
+                        </p>
+                        {subItems.map(({ name: iconName, src, isActive }) => (
+                            <div
+                                className={`${styles.nav} ${
+                                    isActive ? styles.active : ""
+                                }`}
+                                key={iconName}
+                            >
+                                <img src={src} alt={iconName} />
+                                <p className="text-base">{iconName}</p>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+        </aside>
+        {open && <div className={styles.overlay} onClick={closeModal} role="none" />}
+    </>
 );
 
 export default SideBar;

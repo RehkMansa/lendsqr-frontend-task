@@ -13,7 +13,7 @@ const DashboardLayout = () => {
         <>
             <Header toggleSidebar={handleMenuToggle} />
             <main className={styles.main}>
-                <SideBar open={showSideBar} />
+                <SideBar closeModal={handleMenuToggle} open={showSideBar} />
                 <section className={styles.outlet}>
                     <Outlet />
                 </section>
