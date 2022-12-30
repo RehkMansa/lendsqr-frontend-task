@@ -1,6 +1,7 @@
 @import "../../../styles/constants.scss";
 @import "../../../styles/fonts.scss";
 @import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints.scss";
 
 .header {
     position: sticky;
@@ -20,10 +21,6 @@
         display: grid;
         grid-template-columns: $gridArea;
         align-items: center;
-
-        img {
-            height: 27px;
-        }
     }
 
     .header__right {
@@ -67,6 +64,33 @@
         img {
             height: 48px;
             width: 48px;
+        }
+    }
+
+    .logo__wrapper {
+        display: flex;
+        // align-items: center;
+        // justify-content: center;
+        gap: 20px;
+
+        button {
+            height: 25px;
+            background: none;
+            border: none;
+            outline: none;
+            display: inline-flex;
+            cursor: pointer;
+        }
+
+        img {
+            max-height: 28px;
+            object-fit: cover;
+        }
+
+        @include breakpoint(xl) {
+            button {
+                display: none;
+            }
         }
     }
 }

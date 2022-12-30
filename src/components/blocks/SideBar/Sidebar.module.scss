@@ -1,15 +1,13 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/constants.scss";
+@import "../../../styles/breakpoints.scss";
 
 .aside {
     color: rgba($color: $primary-color, $alpha: 0.8);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
-    position: sticky;
-    top: 0;
-    // bottom: 0;
-    position: sticky;
-    overflow-y: scroll;
-    max-height: 100vh;
+    // position: fixed;
+    // width: 50px;
+
     scrollbar-width: 1px;
     scrollbar-color: rgba($color: $accent-darker, $alpha: 0.1) transparent;
     padding-bottom: 80px;
@@ -40,7 +38,7 @@
         display: flex;
         gap: 10px;
         align-items: center;
-        padding: 10px 30px;
+        padding: 10px 20px;
         cursor: pointer;
 
         &.active {
@@ -63,9 +61,76 @@
                 opacity: 1;
             }
         }
+
+        @include breakpoint(xl) {
+            padding: 10px 30px;
+        }
     }
 
     img {
         opacity: 0.8;
+    }
+
+    @include breakpoint(xl) {
+        position: sticky;
+        top: 0;
+        // bottom: 0;
+        position: sticky;
+        overflow-y: scroll;
+        max-height: 100vh;
+    }
+
+    @media (max-width: 1199px) {
+        width: 50px;
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+        overflow-y: scroll;
+        max-height: 100vh;
+
+        p {
+            display: none;
+        }
+
+        .nav {
+            padding: 10px 0;
+            justify-content: center;
+
+            svg {
+                display: none;
+            }
+
+            img {
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        &.open {
+            position: fixed;
+            width: 280px;
+            background-color: #fff;
+            top: $headerHeight;
+            bottom: 0;
+            left: 0;
+
+            p {
+                display: block;
+            }
+
+            .nav {
+                padding: 10px 30px;
+                justify-content: start;
+
+                img {
+                    height: 16px;
+                    width: 16px;
+                }
+
+                svg {
+                    display: block;
+                }
+            }
+        }
     }
 }

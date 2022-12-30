@@ -1,29 +1,54 @@
+@import "../../../styles/breakpoints.scss";
+
 .table {
+    $gap: 16px;
+
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 30px;
+
     .span2 {
-        // border: 1px solid green;
         grid-column: span 2;
     }
 
     .table__header {
         display: grid;
         grid-template-columns: repeat(9, 1fr);
-        gap: 16px;
+        gap: $gap;
         white-space: nowrap;
+        margin-bottom: 20px;
 
         & > div {
+            width: 100%;
             display: flex;
             align-items: center;
             gap: 4px;
-
+            border: 1px solid red;
             svg {
                 cursor: pointer;
             }
         }
     }
+
     .table__content {
         display: grid;
         grid-template-columns: repeat(9, 1fr);
-        gap: 16px;
+        padding-block: 23px;
+        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+        gap: $gap;
+
+        & > * {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        font-size: 0.85rem;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
 
         .status {
             display: flex;
@@ -31,5 +56,9 @@
             justify-content: space-between;
             gap: 4px;
         }
+    }
+
+    @include breakpoint(xl) {
+        $gap: 35px;
     }
 }

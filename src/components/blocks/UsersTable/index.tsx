@@ -12,7 +12,7 @@ const headerItems = [
 ];
 
 const dummyPerson = {
-    org: "lendsqr",
+    org: "Lendsqr",
     username: "rehkmansa",
     email: "rehkmansa25@gmail.com",
     phoneNumber: "09065068997",
@@ -30,7 +30,7 @@ const TableRowItem = ({
     dateJoined,
     status,
 }: typeof dummyPerson) => (
-    <>
+    <div role="row" className={styled.table__content}>
         <div role="cell" aria-labelledby="organization">
             {org}
         </div>
@@ -54,7 +54,7 @@ const TableRowItem = ({
             {status}
             <BsThreeDotsVertical />
         </div>
-    </>
+    </div>
 );
 
 const UsersTable = () => (
@@ -75,11 +75,9 @@ const UsersTable = () => (
                 </div>
             ))}
         </div>
-        <div role="row" className={styled.table__content}>
-            {dummyArr.map((n, i) => (
-                <TableRowItem key={n} {...dummyPerson} />
-            ))}
-        </div>
+        {dummyArr.map((n, i) => (
+            <TableRowItem key={n} {...dummyPerson} />
+        ))}
     </div>
 );
 

@@ -23,8 +23,8 @@ const NavItem = ({ isActive, iconName, src, dropDown, className }: Props) => (
     </div>
 );
 
-const SideBar = () => (
-    <aside className={`${styles.aside} space-y-15`}>
+const SideBar = ({ open }: { open: boolean }) => (
+    <aside className={`${styles.aside} ${open ? styles.open : ""} space-y-15`}>
         <div>
             <div className="space-y-13">
                 <NavItem

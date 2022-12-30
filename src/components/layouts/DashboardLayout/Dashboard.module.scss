@@ -1,14 +1,16 @@
 @import "../../../styles/fonts.scss";
 @import "../../../styles/constants.scss";
 @import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints.scss";
 
 .main {
     font-family: $workSans;
-    display: grid;
     color: $primary-color;
+    display: grid;
+    grid-auto-flow: column;
 
     & > * {
-        padding-block: calc($headerHeight / 2) $headerHeight;
+        padding-block: calc($headerHeight / 2) 70px;
     }
 
     .outlet {
@@ -19,7 +21,7 @@
         }
     }
 
-    @media (min-width: 992px) {
+    @include breakpoint(xl) {
         grid-template-columns: $gridArea;
     }
 }
