@@ -64,8 +64,12 @@ h6 {
     src: url("/fonts/avenir/Avenir Next Font.ttf") format("truetype");
 }
 
-.capitalize {
+.uppercase {
     text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
 }
 
 .visually-hidden {

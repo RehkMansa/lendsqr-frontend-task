@@ -1,0 +1,35 @@
+.table {
+    .span2 {
+        // border: 1px solid green;
+        grid-column: span 2;
+    }
+
+    .table__header {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 16px;
+        white-space: nowrap;
+
+        & > div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            svg {
+                cursor: pointer;
+            }
+        }
+    }
+    .table__content {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 16px;
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+        }
+    }
+}

@@ -92,7 +92,7 @@ const Login = () => {
                                 name="password"
                                 error={errors.password}
                             />
-                            <p className="text-accent text-xs font-bold capitalize">
+                            <p className="text-accent text-xs font-bold uppercase">
                                 Forgot password?
                             </p>
                             <div className={styled.buttonWrapper}>

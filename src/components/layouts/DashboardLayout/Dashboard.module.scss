@@ -8,7 +8,7 @@
     color: $primary-color;
 
     & > * {
-        padding-top: calc($headerHeight / 2);
+        padding-block: calc($headerHeight / 2) $headerHeight;
     }
 
     .outlet {

@@ -43,7 +43,7 @@ const SideBar = () => (
             </div>
             {sidebarItems.map(({ name, subItems }) => (
                 <div className={`${styles.wrapper} space-y-5`} key={name}>
-                    <p className="text-sm capitalize text-primary font-semiMedium">
+                    <p className="text-sm uppercase text-primary font-semiMedium">
                         {name}
                     </p>
                     {subItems.map(({ name: iconName, src, isActive }) => (
