@@ -8,7 +8,7 @@ const DashboardLayout = () => (
         <Header />
         <main className={styles.main}>
             <SideBar />
-            <section>
+            <section className={styles.outlet}>
                 <Outlet />
             </section>
         </main>

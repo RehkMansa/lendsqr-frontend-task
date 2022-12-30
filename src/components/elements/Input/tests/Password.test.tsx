@@ -19,7 +19,9 @@ describe("PasswordInput", () => {
     });
 
     it("should render the error message if provided", () => {
-        const { getByText } = render(<PasswordInput error="Invalid password" />);
+        const { getByText } = render(
+            <PasswordInput placeholder="Password" error="Invalid password" />
+        );
         expect(getByText("Invalid password")).toBeInTheDocument();
     });
 });
