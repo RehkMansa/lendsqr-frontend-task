@@ -3,6 +3,7 @@ import ActiveUsersIcon from "../../../assets/icons/stats/active-users.svg";
 import UsersWithSavingsIcon from "../../../assets/icons/stats/users-with-savings.svg";
 import UsersWithLoansIcon from "../../../assets/icons/stats/users-with-loans.svg";
 import MetaInfo from "../../elements/MetaInfo";
+import styled from "./MetaArea.module.scss";
 
 const options = [
     {
@@ -21,13 +22,13 @@ const options = [
         value: "12,453",
     },
     {
-        name: "users with loans",
+        name: "users with savings",
         icon: UsersWithSavingsIcon,
         value: "10,453",
     },
 ];
 const MetaArea = () => (
-    <div>
+    <div className={styled.wrapper}>
         {options.map((option) => (
             <MetaInfo {...option} key={option.name} />
         ))}

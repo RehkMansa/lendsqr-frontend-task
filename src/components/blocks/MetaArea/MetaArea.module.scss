@@ -1,0 +1,14 @@
+@import "../../../styles/breakpoints.scss";
+
+.wrapper {
+    display: grid;
+    gap: 1.4em;
+
+    @include breakpoint(md) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.3em 1.6em;
+    }
+    @include breakpoint(lg) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

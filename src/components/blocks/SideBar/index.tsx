@@ -25,35 +25,39 @@ const NavItem = ({ isActive, iconName, src, dropDown, className }: Props) => (
 
 const SideBar = () => (
     <aside className={`${styles.aside} space-y-15`}>
-        <div className="space-y-13">
-            <NavItem
-                dropDown
-                isActive={false}
-                iconName="Switch Organization"
-                src={SwitchOrg}
-                className="text-accent-darker"
-            />
-            <NavItem
-                dropDown={false}
-                isActive={false}
-                iconName="Dashboard"
-                src={DashboardIcon}
-            />
-        </div>
-        {sidebarItems.map(({ name, subItems }) => (
-            <div className={`${styles.wrapper} space-y-5`} key={name}>
-                <p className="text-sm capitalize text-primary font-semiMedium">{name}</p>
-                {subItems.map(({ name: iconName, src, isActive }) => (
-                    <div
-                        className={`${styles.nav} ${isActive ? styles.active : ""}`}
-                        key={iconName}
-                    >
-                        <img src={src} alt={iconName} />
-                        <p className="text-base">{iconName}</p>
-                    </div>
-                ))}
+        <div>
+            <div className="space-y-13">
+                <NavItem
+                    dropDown
+                    isActive={false}
+                    iconName="Switch Organization"
+                    src={SwitchOrg}
+                    className="text-accent-darker"
+                />
+                <NavItem
+                    dropDown={false}
+                    isActive={false}
+                    iconName="Dashboard"
+                    src={DashboardIcon}
+                />
             </div>
-        ))}
+            {sidebarItems.map(({ name, subItems }) => (
+                <div className={`${styles.wrapper} space-y-5`} key={name}>
+                    <p className="text-sm capitalize text-primary font-semiMedium">
+                        {name}
+                    </p>
+                    {subItems.map(({ name: iconName, src, isActive }) => (
+                        <div
+                            className={`${styles.nav} ${isActive ? styles.active : ""}`}
+                            key={iconName}
+                        >
+                            <img src={src} alt={iconName} />
+                            <p className="text-base">{iconName}</p>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </div>
     </aside>
 );
 

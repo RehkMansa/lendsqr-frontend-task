@@ -1,4 +1,5 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/constants.scss";
 
 .aside {
     color: rgba($color: $primary-color, $alpha: 0.8);
@@ -7,7 +8,7 @@
     top: 0;
     position: sticky;
     overflow-y: scroll;
-    max-height: 100vh;
+    max-height: calc(100vh - $headerHeight);
     scrollbar-width: 1px;
     scrollbar-color: rgba($color: $accent-darker, $alpha: 0.1) transparent;
 
