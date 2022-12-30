@@ -12,7 +12,9 @@ describe("Input component", () => {
     });
 
     it("displays an error message if the error prop is set", () => {
-        const { getByText } = render(<DefaultInput error="Invalid value" />);
+        const { getByText } = render(
+            <DefaultInput placeholder="" error="Invalid value" />
+        );
         const errorMessage = getByText("Invalid value");
         expect(errorMessage).toBeInTheDocument();
     });
@@ -25,13 +27,4 @@ describe("Input component", () => {
         fireEvent.change(input, { target: { value: "new value" } });
         expect(input.value).toBe("new value");
     });
-
-    /* 
-    it("fires an event when the user clicks a button", () => {
-        const handleClick = jest.fn();
-        const { getByText } = render(<Input error="No username" onClick={handleClick} />);
-        const button = getByText(text => text.includes("Click me"));
-        fireEvent.click(button);
-        expect(handleClick).toHaveBeenCalled();
-    }); */
 });

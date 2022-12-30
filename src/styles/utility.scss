@@ -10,6 +10,16 @@
     }
 }
 
+@mixin margin-top-utility {
+    @for $i from 1 through 30 {
+        .mt-#{$i} {
+            & > * + * {
+                margin-top: #{$i * 2}px;
+            }
+        }
+    }
+}
+
 @include spacing-utility;
 
 @mixin text-color($color) {
@@ -58,8 +68,9 @@ $font-weights: (
     light: 300,
     normal: 400,
     normalAlt: 450,
+    semiMedium: 500,
     medium: 600,
-    semiBold: 700,
+    semibold: 700,
     bold: 750,
     extraBold: 800,
     heavy: 900,
