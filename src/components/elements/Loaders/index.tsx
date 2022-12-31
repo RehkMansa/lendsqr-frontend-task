@@ -8,7 +8,7 @@ export const SuspenseLoader = () => (
 );
 
 export const FullScreenLoader = () => (
-    <div>
+    <div className={styles.loader__fullscreen}>
         <ClipLoader color="#39CDCC" />
     </div>
 );

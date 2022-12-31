@@ -5,3 +5,12 @@
     place-content: center;
     background-color: rgba($color: #fff, $alpha: 0.3);
 }
+
+.loader__fullscreen {
+    inset: 0;
+    position: fixed;
+    display: grid;
+    place-content: center;
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    z-index: 3;
+}

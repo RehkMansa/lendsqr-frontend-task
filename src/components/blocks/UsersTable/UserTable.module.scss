@@ -1,110 +1,5 @@
+@import "../../../styles/colors.scss";
 @import "../../../styles/breakpoints.scss";
-
-.table {
-    display: none;
-    border: 1px solid rgba(33, 63, 125, 0.06);
-    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
-    padding: 30px;
-
-    & > * {
-        display: grid;
-        width: 100%;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 16px;
-    }
-
-    .table__content,
-    .table__header {
-        .table__desktop {
-            display: none;
-        }
-
-        .personal__info {
-            display: grid;
-            gap: 5px;
-        }
-    }
-
-    .span2 {
-        grid-column: span 2;
-    }
-    .span3 {
-        grid-column: span 3;
-    }
-
-    @include breakpoint(xl) {
-        & > * {
-            gap: 30px;
-        }
-    }
-    @include breakpoint(md) {
-        max-width: 100%;
-        & > * {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-    }
-
-    @include breakpoint(lg) {
-        .table__content,
-        .table__header {
-            .table__tablet {
-                display: none;
-            }
-
-            .table__desktop {
-                display: flex;
-            }
-        }
-
-        & > * {
-            grid-template-columns: repeat(9, 1fr);
-        }
-    }
-
-    .table__header {
-        white-space: nowrap;
-        margin-bottom: 20px;
-
-        & > div {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-
-            svg {
-                cursor: pointer;
-            }
-        }
-    }
-
-    .table__content {
-        padding-block: 23px;
-        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
-
-        & > * {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        font-size: 0.85rem;
-
-        &:last-of-type {
-            border-bottom: none;
-        }
-
-        .status {
-            align-items: center;
-            justify-content: space-between;
-            gap: 4px;
-        }
-    }
-
-    @include breakpoint(md) {
-        display: block;
-    }
-}
 
 .wrapper {
     border: 1px solid rgba(33, 63, 125, 0.06);
@@ -112,6 +7,10 @@
     border-radius: 4px;
     padding: 30px;
     overflow-x: auto;
+
+    table {
+        overflow-x: auto;
+    }
 
     .control__header {
         display: none;
@@ -127,13 +26,36 @@
             color: transparent;
         }
     }
+}
 
+.status__info {
+    padding: 5px 15px;
+    background-color: rgba($color: $primary-color, $alpha: 0.06);
+    border-radius: 100px;
+}
+
+@media (max-width: 767px) {
+    .md__table {
+        display: none;
+    }
+
+    svg {
+        width: 20px;
+    }
+
+    .status__info {
+        width: fit-content;
+        padding: 2px 7px;
+    }
+}
+
+.mobile__table {
     @include breakpoint(md) {
         display: none;
     }
 }
 
-.mobile__table {
+.table {
     border-collapse: collapse;
     overflow-x: auto;
     white-space: nowrap;
@@ -153,15 +75,62 @@
         }
     }
 
+    th {
+        text-transform: uppercase;
+        div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+
     td,
     th {
-        padding: 20px 10px;
+        padding: 15px 10px;
+        font-size: 14px;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
     }
 
     .meta__info {
         display: flex;
         justify-content: space-between;
-        gap: 1px;
+        gap: 10px;
         align-items: center;
+    }
+}
+
+.table.skeleton__loader {
+    display: block;
+
+    [role="cell"] {
+        animation: skeleton-loading 1s linear infinite alternate;
+        color: transparent;
+        height: 20px;
+        background-color: #ebebeb;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    & div {
+        background-color: unset;
+        height: auto;
+        animation: none;
+    }
+
+    // div:role
+
+    svg {
+        display: none;
+    }
+
+    @keyframes skeleton-loading {
+        0% {
+            background-color: hsl(0, 0%, 91%);
+        }
+        100% {
+            background-color: hsl(200, 0%, 96%);
+        }
     }
 }

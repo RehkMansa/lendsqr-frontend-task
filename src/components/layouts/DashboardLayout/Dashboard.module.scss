@@ -35,7 +35,6 @@
     }
 
     @include rangedBreakPoint(lg) {
-        display: grid;
         .outlet {
             margin-left: 50px;
         }

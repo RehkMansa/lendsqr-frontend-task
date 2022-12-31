@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import { BiRefresh } from "react-icons/bi";
+import styled from "./ErrorBoundary.module.scss";
+import ErrorMessage from "../../blocks/ErrorMessage";
 
 interface Props {
     children: ReactNode;
@@ -29,16 +30,11 @@ class ErrorBoundary extends Component<Props, State> {
 
         if (hasError) {
             return (
-                <main className="flex justify-center mx-auto items center flex-col w-fit">
-                    <h1>Something went wrong.</h1>
-                    <button
-                        onClick={() => window.location.reload()}
-                        type="button"
-                        className="flex items-center"
-                    >
-                        <BiRefresh />
-                        Reload
-                    </button>
+                <main className={styled.error__boundary}>
+                    <ErrorMessage
+                        message="An error occurred"
+                        error="Looks like we encountered an error while trying to process your request, please reload the page to continue"
+                    />
                 </main>
             );
         }
