@@ -18,6 +18,8 @@
 
     &.transparent {
         border: 1px solid;
+        background: none;
+        color: inherit;
     }
 
     &.transparent-primary {

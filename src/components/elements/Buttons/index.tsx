@@ -12,7 +12,7 @@ const Button = ({
     children,
     type,
     variant = "primary",
-    overrideClass,
+    overrideClass = "",
     ...otherProps
 }: Props) => (
     <button
