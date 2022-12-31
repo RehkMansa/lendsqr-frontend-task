@@ -15,6 +15,7 @@ import {
 } from "../../types/generictype";
 import store from "../../utils/store";
 import { getValidationErrors } from "../../utils/getValidationErrors";
+import Alert from "../../utils/alert";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -35,13 +36,13 @@ const Login = () => {
 
     const handleLogin = () => {
         store.save("user", formData);
+        Alert("Login was successful", "success");
         setErrors({});
         navigate("users");
     };
 
     const handleSubmit = (e: FormSubmit) => {
         e.preventDefault();
-
         const rules = {
             email: "required|email",
             password: "required|min:6",

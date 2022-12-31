@@ -1,6 +1,7 @@
 import { BsThreeDotsVertical, BsFilter } from "react-icons/bs";
 import styled from "./UserTable.module.scss";
 import { toCamelCase } from "../../../utils/formatWord";
+import { UserResponseType } from "../../../types/userResponse.type";
 
 const headerItems = [
     { name: "organization", className: "table__desktop" },
@@ -90,7 +91,7 @@ const TableRowItem = ({
     </div>
 );
 
-const UsersTable = () => (
+const UsersTable = ({ data }: { data: UserResponseType[] }) => (
     <>
         <div className={styled.table} role="table">
             <div
@@ -115,6 +116,7 @@ const UsersTable = () => (
                 <TableRowItem key={n} {...dummyPerson} />
             ))}
         </div>
+
         <div className={styled.wrapper}>
             <table className={styled.mobile__table}>
                 <thead>
