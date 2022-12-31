@@ -6,8 +6,8 @@
 .main {
     font-family: $workSans;
     color: $primary-color;
-    display: grid;
     grid-auto-flow: column;
+    // overflow: hidden;
 
     & > * {
         padding-block: calc($headerHeight / 2) 70px;
@@ -15,19 +15,29 @@
 
     .outlet {
         padding-inline: 4.6%;
+    }
 
-        & > * {
-            padding-top: 20px;
+    @include breakpoint(md) {
+        .outlet {
+            padding-inline: 30px;
+        }
+    }
+    @include breakpoint(xl) {
+        grid-template-columns: $gridArea;
+        display: grid;
+        .outlet {
+            padding-inline: 60px;
+
+            & > * {
+                padding-top: 20px;
+            }
         }
     }
 
-    @include breakpoint(xl) {
-        grid-template-columns: $gridArea;
-    }
-
     @include rangedBreakPoint(lg) {
+        display: grid;
         .outlet {
-            margin-left: 20px;
+            margin-left: 50px;
         }
     }
 }
