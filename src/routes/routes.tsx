@@ -3,7 +3,7 @@ import { useRoutes } from "react-router-dom";
 
 const Login = loadable(() => import("../pages/login/index"));
 const DashboardLayout = loadable(() => import("../components/layouts/DashboardLayout"));
-const User = loadable(() => import("../pages/user"));
+const Users = loadable(() => import("../pages/users"));
 
 const AppRoutes = () => {
     const routes = useRoutes([
@@ -16,7 +16,7 @@ const AppRoutes = () => {
             children: [
                 {
                     path: "users",
-                    element: <User />,
+                    element: <Users />,
                 },
             ],
         },

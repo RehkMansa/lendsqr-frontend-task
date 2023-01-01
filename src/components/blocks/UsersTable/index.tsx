@@ -1,3 +1,4 @@
+import { memo } from "react";
 import dayjs from "dayjs";
 import { BsThreeDotsVertical, BsFilter } from "react-icons/bs";
 import styled from "./UserTable.module.scss";
@@ -11,15 +12,6 @@ const headerItems = [
     { name: "date joined" },
     { name: "status" },
 ];
-
-export const dummyPerson = {
-    org: "Lendsqr",
-    username: "rehkmansa",
-    email: "rehkmansa25@gmail.com",
-    phoneNumber: "09065068997",
-    dateJoined: "May 15, 2020 10:00 AM",
-    status: "Pending",
-};
 
 const UsersTable = ({ data }: { data: UserResponseType[] }) => (
     <div className={styled.wrapper}>
@@ -55,13 +47,15 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
             </tbody>
         </table>
 
+        {/* This table is for mobile, the layout is different from desktop  */}
         <table className={`${styled.table} ${styled.mobile__table}`}>
             <thead>
                 <tr className="text-xs uppercase">
                     <th>Org/username</th>
                     <th>Personal Info</th>
                     <th>Date Joined/Status</th>
-                    <th className={styled.control__header}>.</th>
+                    {/* control header makes sure there is enough space on scroll left */}
+                    <th className={styled.control__header}>.</th>{" "}
                 </tr>
             </thead>
             <tbody className="text-sm space-y-10">
@@ -95,4 +89,4 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
     </div>
 );
 
-export default UsersTable;
+export default memo(UsersTable); //  used memo to prevent unnecessary re-renders

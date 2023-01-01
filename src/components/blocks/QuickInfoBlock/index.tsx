@@ -1,9 +1,10 @@
+// import { memo } from "react";
 import Users from "../../../assets/icons/stats/users.svg";
 import ActiveUsersIcon from "../../../assets/icons/stats/active-users.svg";
 import UsersWithSavingsIcon from "../../../assets/icons/stats/users-with-savings.svg";
 import UsersWithLoansIcon from "../../../assets/icons/stats/users-with-loans.svg";
-import MetaInfo from "../../elements/MetaInfo";
-import styled from "./MetaArea.module.scss";
+import QuickInfo from "../../elements/QuickInfo/QuickInfo";
+import styled from "./QuickInfoBlock.module.scss";
 
 const options = [
     {
@@ -27,12 +28,12 @@ const options = [
         value: "10,453",
     },
 ];
-const MetaArea = () => (
+const QuickInfoBlock = () => (
     <div className={styled.wrapper}>
         {options.map((option) => (
-            <MetaInfo {...option} key={option.name} />
+            <QuickInfo {...option} key={option.name} />
         ))}
     </div>
 );
 
-export default MetaArea;
+export default QuickInfoBlock;

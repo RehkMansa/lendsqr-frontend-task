@@ -1,0 +1,99 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints.scss";
+
+@mixin flex-center($gap: 8px) {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    color: $primary-color;
+    flex-direction: column;
+
+    button {
+        background: none;
+        border: none;
+        color: $primary-color;
+
+        font-size: 1rem;
+        cursor: pointer;
+
+        &.active {
+            color: $primary-color;
+            font-weight: 600;
+            opacity: 1;
+        }
+    }
+
+    .icon_button {
+        background: rgba(33, 63, 125, 0.2);
+        border-radius: 4px;
+        color: $accent-darker;
+        padding: 5px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    &.is_opened {
+        margin-bottom: 100px;
+    }
+
+    @include breakpoint(md) {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.pagination__left,
+.pagination__right,
+.pagination__left__inner,
+.pagination__dropdown {
+    @include flex-center;
+}
+
+.pagination__left {
+    font-size: 0.85rem;
+}
+
+.pagination__right {
+    button {
+        opacity: 0.8;
+    }
+}
+
+.pagination__dropdown {
+    position: relative;
+
+    .icon_button {
+        @include flex-center(14px);
+        padding-inline: 10px;
+        width: 100px;
+        justify-content: space-between;
+        svg {
+            font-size: 12px;
+        }
+    }
+}
+
+.list_range {
+    position: absolute;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+    right: 0;
+    left: 0;
+    top: 38px;
+    background-color: #fff;
+    padding-block: 5px;
+    z-index: 1;
+
+    button {
+        // padding-inline: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: block;
+        width: 100%;
+    }
+}

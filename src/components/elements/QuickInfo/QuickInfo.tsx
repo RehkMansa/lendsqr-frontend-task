@@ -1,4 +1,5 @@
-import styled from "./MetaInfo.module.scss";
+import { memo } from "react";
+import styled from "./QuickInfo.module.scss";
 
 type Props = {
     name: string;
@@ -6,7 +7,7 @@ type Props = {
     value: string;
 };
 
-const MetaInfo = ({ name, icon, value }: Props) => (
+const QuickInfo = ({ name, icon, value }: Props) => (
     <div className={`space-y-6 ${styled.wrapper}`}>
         <img src={icon} alt={name} />
         <h4 className="font-semiMedium text-sm">{name}</h4>
@@ -14,4 +15,4 @@ const MetaInfo = ({ name, icon, value }: Props) => (
     </div>
 );
 
-export default MetaInfo;
+export default memo(QuickInfo); // updates only when props changes

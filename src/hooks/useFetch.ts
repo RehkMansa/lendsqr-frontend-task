@@ -16,14 +16,15 @@ type Action<T> =
     | { type: "error"; payload: Error };
 
 const useFetch = <T = unknown>(url?: string, options?: RequestInit): State<T> => {
-    const cache = useRef<Cache<T>>({});
-    const cancelRequest = useRef<boolean>(false);
+    const cache = useRef<Cache<T>>({}); // used to cache the response
+    const cancelRequest = useRef<boolean>(false); // to subscribe to the api request
 
     const initialState: State<T> = {
         error: undefined,
         data: undefined,
     };
 
+    // reducer function to prevent complex state logic
     const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
         switch (action.type) {
             case "loading":
@@ -40,7 +41,7 @@ const useFetch = <T = unknown>(url?: string, options?: RequestInit): State<T> =>
     const [state, dispatch] = useReducer(fetchReducer, initialState);
 
     useEffect(() => {
-        if (!url) return;
+        if (!url) return; // return if url is empty
 
         cancelRequest.current = false;
 
@@ -73,7 +74,7 @@ const useFetch = <T = unknown>(url?: string, options?: RequestInit): State<T> =>
         fetchData();
 
         return () => {
-            cancelRequest.current = true;
+            cancelRequest.current = true; // prevent the endpoint being called if the dom is unmounted
         };
     }, [url]);
 
@@ -81,3 +82,5 @@ const useFetch = <T = unknown>(url?: string, options?: RequestInit): State<T> =>
 };
 
 export default useFetch;
+
+// code is well explained and gotten from: https://usehooks-ts.com/react-hook/use-fetch
