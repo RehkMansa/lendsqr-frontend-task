@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 const useOnClickOutside = <T extends HTMLElement>(
     handler: (e: MouseEvent | TouchEvent) => void
 ) => {
-    const ref = useRef<T>(null);
+    const ref = useRef<T>(null); // ref type is passed using generic, better than any or unknown
 
     useEffect(() => {
         const listener = (event: MouseEvent | TouchEvent) => {
@@ -12,7 +12,7 @@ const useOnClickOutside = <T extends HTMLElement>(
                 !ref.current ||
                 ref.current.contains(event.target)
             ) {
-                return;
+                return; // returns if the click event is of a child node or the element itself
             }
 
             handler(event);

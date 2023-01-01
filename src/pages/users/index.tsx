@@ -59,10 +59,11 @@ const Users = () => {
         "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
     );
 
+    // using a reducer function to improve performance
     const [{ currentPage, itemsToShow, showDropDown, showFilter }, dispatch] = useReducer(
         userReducer,
         initialState
-    ); // using a reducer function to improve performance
+    );
 
     const dropDownRef = useOnClickOutside<HTMLDivElement>(() =>
         dispatch({ type: "hideRange" })
@@ -72,14 +73,16 @@ const Users = () => {
         dispatch({ type: "showFilter" })
     );
 
+    // memorized to prevent function execution on each render
     const paginatedData = useMemo(
         () => createSubArrays(data ?? [], itemsToShow),
         [data, itemsToShow]
-    ); // memorized to prevent function execution on each render
+    );
 
     if (error) return <ErrorMessage message={error.message} />;
 
-    if (data === undefined) return <FullScreenLoader />; // type guard to prevent undefined error and show loading state
+    // type guard to prevent undefined error and show loading state
+    if (data === undefined) return <FullScreenLoader />;
 
     return (
         <section className="space-y-20">
@@ -94,7 +97,7 @@ const Users = () => {
                     <div ref={filterRef} className={styled.table__filter}>
                         <FilterUsers
                             organizations={data.map(({ orgName }) => ({
-                                label: splitStringByHyphen(orgName),
+                                label: splitStringByHyphen(orgName), // showing short version of organization name
                                 value: orgName,
                             }))}
                         />

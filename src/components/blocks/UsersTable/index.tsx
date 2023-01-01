@@ -14,6 +14,7 @@ const desktopHeader = [
     "status",
 ];
 
+// prefer mapping over values than repeating html codes ::smile
 const mobileHeader = ["Org/Username", "Phone Number/ Email", "Date Joined/ Status"];
 
 const UsersTable = ({ data, filterItems }: Props) => (
@@ -63,4 +64,4 @@ const UsersTable = ({ data, filterItems }: Props) => (
     </div>
 );
 
-export default UsersTable; //  used memo to prevent unnecessary re-renders
+export default UsersTable;
