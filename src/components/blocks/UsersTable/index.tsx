@@ -38,7 +38,7 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
                         <td>{dayjs(createdAt).format("MMM D, YYYY h:mm A")}</td>
                         <td>
                             <div className={styled.meta__info}>
-                                <p className={styled.status__info}>Pending</p>{" "}
+                                <p className={styled.status__info}>Pending</p>
                                 <BsThreeDotsVertical size={16} />
                             </div>
                         </td>
@@ -55,7 +55,7 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
                     <th>Personal Info</th>
                     <th>Date Joined/Status</th>
                     {/* control header makes sure there is enough space on scroll left */}
-                    <th className={styled.control__header}>.</th>{" "}
+                    <th className={styled.control__header}>.</th>
                 </tr>
             </thead>
             <tbody className="text-sm space-y-10">

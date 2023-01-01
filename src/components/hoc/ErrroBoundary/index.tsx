@@ -1,6 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import styled from "./ErrorBoundary.module.scss";
 import ErrorMessage from "../../blocks/ErrorMessage";
+import Alert from "../../../utils/alert";
 
 interface Props {
     children: ReactNode;
@@ -22,6 +23,7 @@ class ErrorBoundary extends Component<Props, State> {
 
     public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         console.error("Uncaught error:", error, errorInfo);
+        Alert(error.message, "error");
     }
 
     public render() {
@@ -31,10 +33,7 @@ class ErrorBoundary extends Component<Props, State> {
         if (hasError) {
             return (
                 <main className={styled.error__boundary}>
-                    <ErrorMessage
-                        message="An error occurred"
-                        error="Looks like we encountered an error while trying to process your request, please reload the page to continue"
-                    />
+                    <ErrorMessage error="Looks like we encountered an error while trying to process your request, please reload the page to continue or contact admin" />
                 </main>
             );
         }

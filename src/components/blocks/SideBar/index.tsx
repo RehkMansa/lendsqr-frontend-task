@@ -1,26 +1,23 @@
 import { BsChevronDown } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import { sidebarItems } from "./data";
 import styles from "./Sidebar.module.scss";
 import DashboardIcon from "../../../assets/icons/sidebar/dashboard.svg";
 import SwitchOrg from "../../../assets/icons/sidebar/switch-organization.svg";
 
 type Props = {
-    isActive: boolean;
     iconName: string;
     src: string;
     dropDown: boolean;
     className?: string;
 };
 
-const NavItem = ({ isActive, iconName, src, dropDown, className }: Props) => (
-    <div
-        className={`${styles.nav} ${isActive ? styles.active : ""} ${className || ""}`}
-        key={iconName}
-    >
+const NavItem = ({ iconName, src, dropDown, className }: Props) => (
+    <NavLink className={`${styles.nav} ${className || ""}`} key={iconName} to="">
         <img src={src} alt={iconName} />
         <p className="text-base">{iconName}</p>
         {dropDown && <BsChevronDown />}
-    </div>
+    </NavLink>
 );
 
 const SideBar = ({ open, closeModal }: { open: boolean; closeModal(): void }) => (
@@ -30,33 +27,28 @@ const SideBar = ({ open, closeModal }: { open: boolean; closeModal(): void }) =>
                 <div className="space-y-13">
                     <NavItem
                         dropDown
-                        isActive={false}
                         iconName="Switch Organization"
                         src={SwitchOrg}
                         className="text-accent-darker"
                     />
-                    <NavItem
-                        dropDown={false}
-                        isActive={false}
-                        iconName="Dashboard"
-                        src={DashboardIcon}
-                    />
+                    <NavItem dropDown={false} iconName="Dashboard" src={DashboardIcon} />
                 </div>
                 {sidebarItems.map(({ name, subItems }) => (
                     <div className={`${styles.wrapper} space-y-5`} key={name}>
                         <p className="text-sm uppercase text-primary font-semiMedium">
                             {name}
                         </p>
-                        {subItems.map(({ name: iconName, src, isActive }) => (
-                            <div
-                                className={`${styles.nav} ${
-                                    isActive ? styles.active : ""
-                                }`}
+                        {subItems.map(({ name: iconName, src }) => (
+                            <NavLink
+                                className={({ isActive }) =>
+                                    `${styles.nav} ${isActive ? styles.active : ""}`
+                                }
                                 key={iconName}
+                                to={iconName.toLowerCase()}
                             >
                                 <img src={src} alt={iconName} />
                                 <p className="text-base">{iconName}</p>
-                            </div>
+                            </NavLink>
                         ))}
                     </div>
                 ))}

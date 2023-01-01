@@ -40,6 +40,13 @@
         align-items: center;
         padding: 10px 20px;
         cursor: pointer;
+        text-decoration: none;
+        color: $primary-color;
+
+        &:hover,
+        &:active {
+            text-decoration: none;
+        }
 
         &.active {
             background: rgba($color: $accent-color, $alpha: 0.09);

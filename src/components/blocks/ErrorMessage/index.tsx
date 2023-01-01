@@ -3,9 +3,13 @@ import Alert from "../../../utils/alert";
 import Button from "../../elements/Buttons";
 import styled from "./Error.module.scss";
 
-const ErrorMessage = ({ message, error }: { message: string; error?: string }) => {
+type Props = { message?: string; error?: string };
+
+const ErrorMessage = ({ message, error }: Props) => {
     useEffect(() => {
-        Alert(message, "error");
+        if (message) {
+            Alert(message, "error");
+        }
     }, [message]);
 
     return (

@@ -64,7 +64,7 @@ const Users = () => {
         [data, itemsToShow]
     ); // memorized to prevent function execution on each render
 
-    if (error) return <ErrorMessage message="An error occurred while getting users" />;
+    if (error) return <ErrorMessage message={error.message} />;
 
     if (data === undefined) return <FullScreenLoader />; // type guard to prevent undefined error and show loading state
 
