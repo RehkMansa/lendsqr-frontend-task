@@ -99,6 +99,41 @@
         justify-content: space-between;
         gap: 10px;
         align-items: center;
+
+        svg {
+            cursor: pointer;
+        }
+    }
+
+    .dropdown__wrapper {
+        position: relative;
+    }
+
+    .dropdown {
+        position: absolute;
+        background-color: #fff;
+        margin-top: 10px;
+        max-width: 200px;
+        display: block;
+        white-space: pre-wrap;
+        border: 1px solid rgba(84, 95, 125, 0.04);
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        padding: 20px;
+        min-width: 180px;
+        right: 0;
+        z-index: 1;
+
+        & > * + * {
+            margin-top: 10px;
+        }
+
+        p {
+            display: flex;
+            gap: 4px;
+            color: $primary-color;
+            align-items: center;
+        }
     }
 }
 

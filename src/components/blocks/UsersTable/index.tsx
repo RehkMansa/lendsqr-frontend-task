@@ -1,27 +1,31 @@
 import { memo } from "react";
-import dayjs from "dayjs";
-import { BsThreeDotsVertical, BsFilter } from "react-icons/bs";
+import { BsFilter } from "react-icons/bs";
 import styled from "./UserTable.module.scss";
 import { UserResponseType } from "../../../types/userResponse.type";
+import { DesktopTableRow, MobileTableRow } from "./TableRow";
 
-const headerItems = [
-    { name: "organization" },
-    { name: "username" },
-    { name: "email" },
-    { name: "phone number" },
-    { name: "date joined" },
-    { name: "status" },
+type Props = { data: UserResponseType[]; filterItems(): void };
+
+const desktopHeader = [
+    "organization",
+    "username",
+    "email",
+    "phone number",
+    "date joined",
+    "status",
 ];
 
-const UsersTable = ({ data }: { data: UserResponseType[] }) => (
+const mobileHeader = ["Org/Username", "Personal Info", "Date Joined/ Status"];
+
+const UsersTable = ({ data, filterItems }: Props) => (
     <div className={styled.wrapper}>
         <table className={`${styled.table} ${styled.md__table}`}>
             <thead>
                 <tr>
-                    {headerItems.map(({ name }) => (
-                        <th key={name}>
-                            <div>
-                                {name}
+                    {desktopHeader.map((header) => (
+                        <th key={header}>
+                            <div role="button" onClick={filterItems}>
+                                {header}
                                 <BsFilter />
                             </div>
                         </th>
@@ -29,20 +33,8 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
                 </tr>
             </thead>
             <tbody>
-                {data.map(({ id, orgName, userName, email, phoneNumber, createdAt }) => (
-                    <tr key={id}>
-                        <td>{orgName.slice(0, 8)}</td>
-                        <td>{userName}</td>
-                        <td>{email}</td>
-                        <td>{phoneNumber}</td>
-                        <td>{dayjs(createdAt).format("MMM D, YYYY h:mm A")}</td>
-                        <td>
-                            <div className={styled.meta__info}>
-                                <p className={styled.status__info}>Pending</p>
-                                <BsThreeDotsVertical size={16} />
-                            </div>
-                        </td>
-                    </tr>
+                {data.map((row) => (
+                    <DesktopTableRow key={row.id} {...row} />
                 ))}
             </tbody>
         </table>
@@ -51,38 +43,21 @@ const UsersTable = ({ data }: { data: UserResponseType[] }) => (
         <table className={`${styled.table} ${styled.mobile__table}`}>
             <thead>
                 <tr className="text-xs uppercase">
-                    <th>Org/username</th>
-                    <th>Personal Info</th>
-                    <th>Date Joined/Status</th>
-                    {/* control header makes sure there is enough space on scroll left */}
+                    {mobileHeader.map((header) => (
+                        <th key={header}>
+                            <div role="button" onClick={filterItems}>
+                                {header}
+                                <BsFilter />
+                            </div>
+                        </th>
+                    ))}
+                    {/* control header makes sure there is enough space when scrolling right */}
                     <th className={styled.control__header}>.</th>
                 </tr>
             </thead>
             <tbody className="text-sm space-y-10">
-                {data.map(({ id, orgName, userName, email, phoneNumber, createdAt }) => (
-                    <tr key={id}>
-                        <td>
-                            <div className={styled.org__info}>
-                                <p>{orgName.slice(0, 4)}</p>
-                                <p>{userName}</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div className={styled.personal__info}>
-                                <p>{phoneNumber}</p>
-                                <p>{email}</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div className={styled.meta__info}>
-                                <div>
-                                    <p>{dayjs(createdAt).format("MMM D, YYYY")}</p>
-                                    <p className={styled.status__info}>Pending</p>
-                                </div>
-                                <BsThreeDotsVertical size={16} />
-                            </div>
-                        </td>
-                    </tr>
+                {data.map((row) => (
+                    <MobileTableRow key={row.id} {...row} />
                 ))}
             </tbody>
         </table>
