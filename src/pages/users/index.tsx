@@ -9,6 +9,8 @@ import { UserResponseType } from "../../types/userResponse.type";
 import { createSubArrays } from "../../utils/createSubArray";
 import styled from "./Users.module.scss";
 import useOnClickOutside from "../../hooks/useOnclickOutside";
+import FilterUsers from "./FilterUsers";
+import { splitStringByHyphen } from "../../utils/formatWord";
 
 const listRange = [10, 20, 50, 75, 100];
 
@@ -16,6 +18,7 @@ const initialState = {
     currentPage: 0,
     itemsToShow: 20,
     showDropDown: false,
+    showFilter: false,
 };
 type Action =
     | { type: "pagination"; payload: number }
@@ -23,7 +26,9 @@ type Action =
     | { type: "next" }
     | { type: "showRange" }
     | { type: "selectRange"; payload: number }
-    | { type: "hideRange" };
+    | { type: "hideRange" }
+    | { type: "showFilter" }
+    | { type: "hideFilter" };
 
 const userReducer = (state: typeof initialState, action: Action) => {
     switch (action.type) {
@@ -39,6 +44,10 @@ const userReducer = (state: typeof initialState, action: Action) => {
             return { ...state, itemsToShow: action.payload, showDropDown: false };
         case "hideRange":
             return { ...state, showDropDown: false };
+        case "hideFilter":
+            return { ...state, showFilter: false };
+        case "showFilter":
+            return { ...state, showFilter: !state.showFilter };
 
         default:
             return state;
@@ -50,13 +59,17 @@ const Users = () => {
         "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
     );
 
-    const [{ currentPage, itemsToShow, showDropDown }, dispatch] = useReducer(
+    const [{ currentPage, itemsToShow, showDropDown, showFilter }, dispatch] = useReducer(
         userReducer,
         initialState
     ); // using a reducer function to improve performance
 
     const dropDownRef = useOnClickOutside<HTMLDivElement>(() =>
         dispatch({ type: "hideRange" })
+    );
+
+    const filterRef = useOnClickOutside<HTMLDivElement>(() =>
+        dispatch({ type: "showFilter" })
     );
 
     const paginatedData = useMemo(
@@ -72,7 +85,22 @@ const Users = () => {
         <section className="space-y-20">
             <h1 className="text-2xl text-accent-darker font-semiMedium">Users</h1>
             <QuickInfoBlock />
-            <UsersTable data={paginatedData[currentPage]} />
+            <div className={styled.table}>
+                <UsersTable
+                    filterItems={() => dispatch({ type: "showFilter" })}
+                    data={paginatedData[currentPage]}
+                />
+                {showFilter && (
+                    <div ref={filterRef} className={styled.table__filter}>
+                        <FilterUsers
+                            organizations={data.map(({ orgName }) => ({
+                                label: splitStringByHyphen(orgName),
+                                value: orgName,
+                            }))}
+                        />
+                    </div>
+                )}
+            </div>
 
             <div
                 className={`${styled.pagination} ${showDropDown ? styled.is_opened : ""}`}

@@ -10,3 +10,5 @@ export const toCamelCase = (str: string) => {
     }
     return camelCase;
 };
+
+export const splitStringByHyphen = (str: string) => str.split("-")[0];

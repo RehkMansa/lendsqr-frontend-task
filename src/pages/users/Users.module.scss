@@ -91,9 +91,23 @@
     z-index: 1;
 
     button {
-        // padding-inline: 20px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         display: block;
         width: 100%;
     }
+}
+
+.table {
+    position: relative;
+}
+.table__filter {
+    position: absolute;
+    background-color: #fff;
+    top: 80px;
+    left: 30px;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 20px;
+    width: 270px;
 }

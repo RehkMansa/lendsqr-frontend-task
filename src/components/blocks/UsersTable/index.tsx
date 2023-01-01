@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { BsFilter } from "react-icons/bs";
 import styled from "./UserTable.module.scss";
 import { UserResponseType } from "../../../types/userResponse.type";
@@ -15,7 +14,7 @@ const desktopHeader = [
     "status",
 ];
 
-const mobileHeader = ["Org/Username", "Personal Info", "Date Joined/ Status"];
+const mobileHeader = ["Org/Username", "Phone Number/ Email", "Date Joined/ Status"];
 
 const UsersTable = ({ data, filterItems }: Props) => (
     <div className={styled.wrapper}>
@@ -64,4 +63,4 @@ const UsersTable = ({ data, filterItems }: Props) => (
     </div>
 );
 
-export default memo(UsersTable); //  used memo to prevent unnecessary re-renders
+export default UsersTable; //  used memo to prevent unnecessary re-renders

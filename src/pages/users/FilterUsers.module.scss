@@ -1,0 +1,30 @@
+.filter {
+    & > * + * {
+        margin-top: 15px;
+    }
+}
+.filter__buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 15px;
+}
+.filter__input {
+    p {
+        text-transform: capitalize;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    div {
+        input {
+            border-radius: 8px;
+            border-width: 1px;
+
+            &::placeholder {
+                text-transform: capitalize;
+            }
+        }
+    }
+}
