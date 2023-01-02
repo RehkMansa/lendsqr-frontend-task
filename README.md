@@ -26,6 +26,7 @@ Make sure you have yarn installed, to successfully install the dependencies
 
 ```bash
   yarn  start or npm start
+  navigate to http://localhost:5173/ to view the project
 ```
 
 
