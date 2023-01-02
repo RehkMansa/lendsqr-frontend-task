@@ -23,7 +23,7 @@ test("submitting the login form saves the form data to local storage", async () 
     fireEvent.submit(submitButton);
 
     await waitFor(() => {
-        expect(store.get("user")).toEqual({
+        expect(store.get("users")).toEqual({
             email: "user@example.com",
             password: "password",
         });
