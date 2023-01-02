@@ -1,50 +1,12 @@
+import { useParams } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 import { UserResponseType } from "../../../types/userResponse.type";
 import { convertCamelCaseToString } from "../../../utils/formatWord";
 import DetailsHeader from "./DetailsHeader";
 import styled from "./UserDetails.module.scss";
-
-const userType = {
-    createdAt: "2072-12-27T03:44:22.522Z",
-    orgName: "labore-dolor-et",
-    userName: "Wilburn.Rice",
-    email: "Maverick.Hyatt83@gmail.com",
-    phoneNumber: "(553) 208-0727 x31321",
-    lastActiveDate: "2099-02-28T23:17:40.013Z",
-    profile: {
-        firstName: "Darian",
-        lastName: "Rolfson",
-        phoneNumber: "494-278-0946",
-        avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/725.jpg",
-        gender: "Male",
-        bvn: "815809412",
-        address: "Gusikowski Locks",
-        currency: "NGN",
-    },
-    guarantor: {
-        firstName: "Celine",
-        lastName: "Monahan",
-        phoneNumber: "1-482-227-3654 x71086",
-        gender: "Male",
-        address: "O'Hara Centers",
-    },
-    accountBalance: "496.00",
-    accountNumber: "GWQUSEH1",
-    socials: {
-        facebook: "@lendsqr",
-        instagram: "@lendsqr",
-        twitter: "@lendsqr",
-    },
-    education: {
-        level: "Bsc",
-        employmentStatus: "Employed",
-        sector: "FinTech",
-        duration: "2 Years",
-        officeEmail: "Edna4@yahoo.com",
-        monthlyIncome: ["128.57", "118.07"],
-        loanRepayment: "122.47",
-    },
-    id: "1",
-};
+import { FullScreenLoader } from "../../../components/elements/Loaders";
+import ErrorMessage from "../../../components/blocks/ErrorMessage";
+import Button from "../../../components/elements/Buttons";
 
 const UserInfoCard = ({ name, value }: { name: string; value: string }) => (
     <div className="space-y-2">
@@ -54,13 +16,33 @@ const UserInfoCard = ({ name, value }: { name: string; value: string }) => (
 );
 
 const UserDetails = () => {
-    const { profile, socials, education, guarantor, orgName, userName } =
-        userType as UserResponseType;
+    const { id } = useParams();
+    const { data, error } = useFetch<UserResponseType>(
+        `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`
+    );
+
+    if (error) return <ErrorMessage message={error.message} />;
+
+    if (data === undefined) return <FullScreenLoader />;
+
+    const { profile, socials, education, guarantor, orgName, userName, ...rest } = data;
 
     return (
         <section className="space-y-20">
-            <h1 className="text-2xl text-accent-darker font-semiMedium">Users</h1>
-            <DetailsHeader />
+            <div className={styled.page__title}>
+                <h1 className="text-2xl text-accent-darker font-semiMedium">Users</h1>
+                <div className={styled.button__wrapper}>
+                    <Button variant="transparent-danger">Blacklist User</Button>
+                    <Button variant="transparent-primary">Activate User</Button>
+                </div>
+            </div>
+            <DetailsHeader
+                fullName={`${profile.firstName} ${profile.lastName}`}
+                accountBalance={rest.accountBalance}
+                accountNumber={rest.accountNumber}
+                img={profile.avatar}
+                id={rest.id}
+            />
             <div className={styled.user_info__wrapper}>
                 <div className={styled.user__wrapper}>
                     <h3>Personal Information</h3>

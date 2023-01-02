@@ -64,7 +64,6 @@
     th {
         text-align: left;
         font-weight: 600;
-        // white-space: nowrap;
     }
 
     tr {
@@ -92,7 +91,6 @@
         &::first-letter {
             text-transform: capitalize;
         }
-        cursor: pointer;
     }
 
     .meta__info {
@@ -107,6 +105,8 @@
     }
 
     .dropdown__wrapper {
+        flex: 1;
+        min-width: 20px;
         position: relative;
     }
 

@@ -2,6 +2,24 @@
 @import "../../../styles/fonts.scss";
 @import "../../../styles/breakpoints.scss";
 
+.page__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.button__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    button {
+        text-transform: uppercase;
+    }
+}
+
 .header {
     border: 1px solid rgba(33, 63, 125, 0.06);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
@@ -107,7 +125,7 @@
 .user__details {
     display: grid;
     gap: 25px;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     padding-bottom: 30px;
     border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.1);
 }
@@ -124,6 +142,10 @@
 
     .amount_tab {
         display: block;
+    }
+
+    .user__details {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -161,6 +183,28 @@
         img {
             max-width: 100px;
             max-height: 100px;
+        }
+    }
+
+    .user__details {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@include breakpoint(lg) {
+    .user__details {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile__tier_details {
+        flex-wrap: wrap;
+    }
+
+    .header__details {
+        h4 {
+            white-space: pre-wrap;
         }
     }
 }
