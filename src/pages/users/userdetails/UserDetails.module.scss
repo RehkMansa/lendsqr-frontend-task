@@ -81,10 +81,45 @@
     }
 }
 
+.user_info__wrapper {
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 30px;
+
+    & > * + * {
+        margin-top: 30px;
+    }
+}
+
+.user__wrapper {
+    & > * + * {
+        margin-top: 20px;
+    }
+
+    h3 {
+        color: $accent-darker;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+}
+
+.user__details {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba($color: $primary-color, $alpha: 0.1);
+}
+
+.border__none {
+    border-bottom: none;
+    padding-bottom: 20px;
+}
+
 @include breakpoint(sm) {
     .mobile__only {
         display: none;
-        border: 1px solid red;
     }
 
     .amount_tab {
@@ -93,8 +128,6 @@
 }
 
 @include breakpoint(md) {
-    // (large desktops, 1200px and up)
-
     .header {
         padding-bottom: 0;
     }

@@ -12,3 +12,8 @@ export const toCamelCase = (str: string) => {
 };
 
 export const splitStringByHyphen = (str: string) => str.split("-")[0];
+
+export const convertCamelCaseToString = (camelCase: string) => {
+    const regex = /([A-Z])/g; // uses regexp to convert camel case to string
+    return camelCase.replace(regex, " $1"); // $1 is the original string
+};
