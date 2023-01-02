@@ -1,5 +1,6 @@
 import loadable from "@loadable/component";
 import { useRoutes } from "react-router-dom";
+import AuthGuard from "../components/hoc/AuthGuard";
 
 const Login = loadable(() => import("../pages/login/index"));
 const DashboardLayout = loadable(() => import("../components/layouts/DashboardLayout"));
@@ -13,11 +14,16 @@ const AppRoutes = () => {
             element: <Login />,
         },
         {
-            element: <DashboardLayout />,
+            element: <AuthGuard />,
             children: [
                 {
-                    path: "users",
-                    element: <Users />,
+                    element: <DashboardLayout />,
+                    children: [
+                        {
+                            path: "users",
+                            element: <Users />,
+                        },
+                    ],
                 },
             ],
         },
