@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { BsBell } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import styled from "./Header.module.scss";
@@ -12,7 +13,9 @@ const Header = ({ toggleSidebar }: { toggleSidebar(): void }) => (
                 <button aria-label="toggle menu" type="button" onClick={toggleSidebar}>
                     <RxHamburgerMenu size={23} />
                 </button>
-                <img src={Logo} alt="Lend Sqr" />
+                <Link to="/users">
+                    <img src={Logo} alt="Lend Sqr" />
+                </Link>
             </div>
             <div className={styled.header__right}>
                 <div className={styled.header__search}>

@@ -56,7 +56,7 @@ const SideBar = ({ open, closeModal, logout }: Props) => (
                     </div>
                 ))}
                 <div className={styles.logout}>
-                    <div className={styles.nav}>
+                    <div onClick={logout} role="button" className={styles.nav}>
                         <img src={LogoutIcon} alt="log out" />
                         <p>Log out</p>
                     </div>
