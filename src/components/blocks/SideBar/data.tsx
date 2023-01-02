@@ -7,6 +7,7 @@ import SavingsIcon from "../../../assets/icons/sidebar/customer/savings.svg";
 import UsersIcon from "../../../assets/icons/sidebar/customer/users.svg";
 import WhitelistIcon from "../../../assets/icons/sidebar/customer/whitelist.svg";
 import AuditIcon from "../../../assets/icons/sidebar/settings/audit-logs.svg";
+import SystemMessagesIcon from "../../../assets/icons/sidebar/settings/system-messages.svg";
 import FeePricingIcon from "../../../assets/icons/sidebar/settings/fees-and-pricing.svg";
 import PreferencesIcon from "../../../assets/icons/sidebar/settings/preferences.svg";
 import FeeAndChargeIcon from "../../../assets/icons/sidebar/businesses/fees-and-charges.svg";
@@ -113,6 +114,10 @@ export const sidebarItems = [
             {
                 name: "Audit Logs",
                 src: AuditIcon,
+            },
+            {
+                name: "System Messages",
+                src: SystemMessagesIcon,
             },
         ],
     },

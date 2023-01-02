@@ -35,7 +35,7 @@ const Login = () => {
     };
 
     const handleLogin = () => {
-        store.save("user", formData);
+        store.save("users", formData);
         Alert(`Welcome ${formData.email}`, "success");
         setErrors({});
         navigate("users");

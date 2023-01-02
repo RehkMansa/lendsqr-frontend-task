@@ -3,16 +3,19 @@ import { NavLink } from "react-router-dom";
 import { sidebarItems } from "./data";
 import styles from "./Sidebar.module.scss";
 import DashboardIcon from "../../../assets/icons/sidebar/dashboard.svg";
+import LogoutIcon from "../../../assets/icons/sidebar/logout.svg";
 import SwitchOrg from "../../../assets/icons/sidebar/switch-organization.svg";
 
-type Props = {
+type NavItemProps = {
     iconName: string;
     src: string;
     dropDown: boolean;
     className?: string;
 };
 
-const NavItem = ({ iconName, src, dropDown, className }: Props) => (
+type Props = { open: boolean; closeModal(): void; logout(): void };
+
+const NavItem = ({ iconName, src, dropDown, className }: NavItemProps) => (
     <NavLink className={`${styles.nav} ${className || ""}`} key={iconName} to="">
         <img src={src} alt={iconName} />
         <p className="text-base">{iconName}</p>
@@ -20,7 +23,7 @@ const NavItem = ({ iconName, src, dropDown, className }: Props) => (
     </NavLink>
 );
 
-const SideBar = ({ open, closeModal }: { open: boolean; closeModal(): void }) => (
+const SideBar = ({ open, closeModal, logout }: Props) => (
     <>
         <aside className={`${styles.aside} ${open ? styles.open : ""}`}>
             <div className="space-y-15">
@@ -52,6 +55,15 @@ const SideBar = ({ open, closeModal }: { open: boolean; closeModal(): void }) =>
                         ))}
                     </div>
                 ))}
+                <div className={styles.logout}>
+                    <div className={styles.nav}>
+                        <img src={LogoutIcon} alt="log out" />
+                        <p>Log out</p>
+                    </div>
+                    <div className={styles.version}>
+                        <p className="text-sm font-primary">v1.2.0</p>
+                    </div>
+                </div>
             </div>
         </aside>
         {open && <div className={styles.overlay} onClick={closeModal} role="none" />}

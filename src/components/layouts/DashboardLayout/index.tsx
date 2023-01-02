@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import SideBar from "../../blocks/SideBar";
 import styles from "./Dashboard.module.scss";
 import Header from "../../blocks/Header";
+import store from "../../../utils/store";
 
 const DashboardLayout = () => {
     const [showSideBar, setShowSideBar] = useState(false);
@@ -13,7 +14,11 @@ const DashboardLayout = () => {
         <>
             <Header toggleSidebar={handleMenuToggle} />
             <main className={styles.main}>
-                <SideBar closeModal={handleMenuToggle} open={showSideBar} />
+                <SideBar
+                    logout={() => store.remove("users")}
+                    closeModal={handleMenuToggle}
+                    open={showSideBar}
+                />
                 <section className={styles.outlet}>
                     <Outlet />
                 </section>
