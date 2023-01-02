@@ -1,7 +1,10 @@
+import DetailsHeader from "./DetailsHeader";
+
 const UserDetails = () => (
-    <div>
-        <h1>User Details</h1>
-    </div>
+    <section className="space-y-20">
+        <h1 className="text-2xl text-accent-darker font-semiMedium">Users</h1>
+        <DetailsHeader />
+    </section>
 );
 
 export default UserDetails;

@@ -1,4 +1,5 @@
 import { memo, useState } from "react";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { BsEye, BsPersonCheck, BsPersonX, BsThreeDotsVertical } from "react-icons/bs";
 import styled from "./UserTable.module.scss";
@@ -11,14 +12,15 @@ type Props = {
     email: string;
     phoneNumber: string;
     createdAt: string;
+    id: string;
 };
 
-const DropDown = () => (
+const DropDown = ({ id }: { id: string }) => (
     <div className={styled.dropdown}>
-        <p>
+        <Link to={id}>
             <BsEye size={16} />
             View Details
-        </p>
+        </Link>
         <p>
             <BsPersonX size={16} />
             Blacklist user
@@ -31,7 +33,7 @@ const DropDown = () => (
 );
 
 const DesktopTableRow = memo(
-    ({ createdAt, email, orgName, phoneNumber, userName }: Props) => {
+    ({ createdAt, email, orgName, phoneNumber, userName, id }: Props) => {
         const [showDropDown, setShowDropDown] = useState(false);
         const dropdownRef = useOnClickOutside<HTMLDivElement>(() =>
             setShowDropDown(false)
@@ -53,7 +55,7 @@ const DesktopTableRow = memo(
                                 size={16}
                             />
 
-                            {showDropDown && <DropDown />}
+                            {showDropDown && <DropDown id={id} />}
                         </div>
                     </div>
                 </td>
@@ -64,7 +66,7 @@ const DesktopTableRow = memo(
 
 // using memo to prevent the row from re rendering
 const MobileTableRow = memo(
-    ({ orgName, userName, email, phoneNumber, createdAt }: Props) => {
+    ({ orgName, userName, email, phoneNumber, createdAt, id }: Props) => {
         const [showDropDown, setShowDropDown] = useState(false);
         const dropdownRef = useOnClickOutside<HTMLDivElement>(() =>
             setShowDropDown(false)
@@ -95,7 +97,7 @@ const MobileTableRow = memo(
                                 onClick={() => setShowDropDown((op) => !op)}
                                 size={16}
                             />
-                            {showDropDown && <DropDown />}
+                            {showDropDown && <DropDown id={id} />}
                         </div>
                     </div>
                 </td>

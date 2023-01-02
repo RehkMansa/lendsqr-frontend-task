@@ -92,6 +92,7 @@
         &::first-letter {
             text-transform: capitalize;
         }
+        cursor: pointer;
     }
 
     .meta__info {
@@ -128,11 +129,13 @@
             margin-top: 10px;
         }
 
-        p {
+        p,
+        a {
             display: flex;
             gap: 4px;
             color: $primary-color;
             align-items: center;
+            text-decoration: none;
         }
     }
 }

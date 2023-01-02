@@ -46,7 +46,7 @@ export type UserResponseType = {
     accountNumber: string;
     socials: Socials;
     education: Education;
-    id: "1";
+    id: string;
 };
 
 /* 

@@ -1,0 +1,7 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    color: #faaf00;
+    max-width: fit-content;
+    // min-width: 120px;
+}

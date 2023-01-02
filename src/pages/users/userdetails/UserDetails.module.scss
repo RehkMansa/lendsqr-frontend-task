@@ -1,0 +1,133 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+@import "../../../styles/breakpoints.scss";
+
+.header {
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 30px;
+    padding-bottom: 0;
+}
+
+.header__details {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+
+    h4 {
+        font-weight: 500;
+        font-size: 1.4rem;
+        white-space: nowrap;
+        color: $accent-darker;
+    }
+}
+
+.tier_details {
+    display: none;
+}
+
+.mobile__tier_details {
+    display: flex;
+    align-items: center;
+}
+
+.amount_tab {
+    display: none;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    img {
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.mobile__info_tab {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.page__tabs {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 7px;
+
+    .tab {
+        padding-bottom: 5px;
+        white-space: nowrap;
+        color: rgba(0, 0, 0, 0.6);
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:first-of-type {
+            border-bottom: 2px solid;
+            color: $accent-color;
+            padding-inline: 10px;
+        }
+    }
+}
+
+@include breakpoint(sm) {
+    .mobile__only {
+        display: none;
+        border: 1px solid red;
+    }
+
+    .amount_tab {
+        display: block;
+    }
+}
+
+@include breakpoint(md) {
+    // (large desktops, 1200px and up)
+
+    .header {
+        padding-bottom: 0;
+    }
+
+    .page__tabs {
+        margin-top: 50px;
+        gap: 32px;
+    }
+
+    .header__details {
+        gap: 30px;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .mobile__tier_details {
+        display: none;
+    }
+
+    .tier_details {
+        padding: 30px;
+        display: block;
+        border-inline: 1px solid rgba($color: $primary-color, $alpha: 0.1);
+
+        p {
+            margin-left: 2px;
+        }
+    }
+
+    .avatar {
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+}
