@@ -30,7 +30,7 @@ const UserDetails = () => {
     return (
         <section className="space-y-20">
             <div className={styled.page__title}>
-                <h1 className="text-2xl text-accent-darker font-semiMedium">Users</h1>
+                <h1 className="text-2xl text-accent-darker font-semiMedium">User Details</h1>
                 <div className={styled.button__wrapper}>
                     <Button variant="transparent-danger">Blacklist User</Button>
                     <Button variant="transparent-primary">Activate User</Button>
